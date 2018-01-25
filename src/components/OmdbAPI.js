@@ -6,14 +6,15 @@ export class OmdbAPI extends Component{
     super(props)
     this.state = {
       movies : [],
-      movie : []
+      movieId : "",
+      movie: []
     }
     this.clickedTitle = this.clickedTitle.bind(this)
   }
 
   componentDidMount() {
-    const API = 'http://www.omdbapi.com/?s=batman&apikey=db875066'
-    fetch(API).then(data => data.json())
+    const moviesAPI = 'http://www.omdbapi.com/?s=batman&apikey=db875066'
+    fetch(moviesAPI).then(data => data.json())
       .then(json =>
       this.setState({
         movies : json.Search
@@ -22,8 +23,18 @@ export class OmdbAPI extends Component{
   }
 
   clickedTitle(imdbID) {
-    console.log(imdbID)
+    console.log(this.state.movieId)
+    let moviePage = "http://www.omdbapi.com/?i="+imdbID+"&apikey=db875066"
+    fetch(moviePage)
+    .then(movieData => movieData.json())
+    .then(json =>
+    this.setState({
+      movie : json,
+      movieId : imdbID
+    }))
+    console.log(this.state)
   }
+
   render() {
     return(
       <div>
@@ -35,7 +46,6 @@ export class OmdbAPI extends Component{
 }
 
 export class MovieList extends Component{
-
   constructor(props) {
     super(props)
     this.titleClicked = this.titleClicked.bind(this)
@@ -49,7 +59,7 @@ export class MovieList extends Component{
 
     let movieList = this.props.movies.map(function(movie,index) {
       let imdbID = movie.imdbID
-      return <li key={index+Date.now()} onClick={this.titleClicked(imdbID)}>{movie.Title}</li>
+      return <li key={index+Date.now()} onClick={(singleMovie) => this.titleClicked(imdbID)}>{movie.Title}</li>
     }.bind(this))
 
     return(
@@ -61,17 +71,10 @@ export class MovieList extends Component{
 }
 
 export class DisplayMovie extends Component {
-
   render() {
-
-    let movieToDisplay = this.props.movie.map(function(currentMovie) {
-      return <li>Hello</li>
-    })
-
     return(
       <div>
-      asdas
-      {movieToDisplay}
+      {this.props.movie.Title}
       </div>
     )
   }
