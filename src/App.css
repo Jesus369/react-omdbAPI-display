@@ -1,28 +1,55 @@
-.App {
-  text-align: center;
+body {
+  background-color: #0F0F0F;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.container {
   color: white;
+  display: flex;
+  text-align: center;
+  height: 30em;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
-.App-title {
+.movies_holder {
+  background-color: #1F1F1F;
+  display: inline-block;
+  list-style: none;
+  width: 19em;
+}
+
+.movie_container {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto 0 auto;
+  width: 60%;
+}
+
+.styleImage {
+  height: 30em;
+  width: 20em;
+}
+
+.movie_info_container {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 0 0 2em;
+}
+
+.style_movieTitle {
+  font-family: "Arial Narrow";
   font-size: 1.5em;
+  margin: 0 0 2em 0;
 }
 
-.App-intro {
-  font-size: large;
+.style_movieGenre {
+  font-family: "Avenir Next";
+  margin: 0 0 2em 0;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.style_moviePlot {
+  font-family: "Avenir Next";
+  margin: 0 0 2em 0;
 }

@@ -38,8 +38,11 @@ export class OmdbAPI extends Component{
   render() {
     return(
       <div>
-      <MovieList movies={this.state.movies} clickedTitleCallback={this.clickedTitle}/>
       <DisplayMovie movie={this.state.movie}/>
+
+      <div className="container">
+        <MovieList movies={this.state.movies} clickedTitleCallback={this.clickedTitle}/>
+      </div>
       </div>
     )
   }
@@ -59,7 +62,9 @@ export class MovieList extends Component{
 
     let movieList = this.props.movies.map(function(movie,index) {
       let imdbID = movie.imdbID
-      return <li key={index+Date.now()} onClick={(singleMovie) => this.titleClicked(imdbID)}>{movie.Title}</li>
+      return  <div className="movies_holder" key={index+Date.now()} onClick={(singleMovie) => this.titleClicked(imdbID)}>
+                <li><img className="styleImage" src={movie.Poster}/></li>
+              </div>
     }.bind(this))
 
     return(
@@ -73,8 +78,13 @@ export class MovieList extends Component{
 export class DisplayMovie extends Component {
   render() {
     return(
-      <div>
-      {this.props.movie.Title}
+      <div className="movie_container">
+        <div><img src={this.props.movie.Poster}/></div>
+        <div className="movie_info_container">
+          <div className="style_movieTitle">{this.props.movie.Title}</div>
+          <div className="style_movieGenre">{this.props.movie.Genre}</div>
+          <div className="style_moviePlot">{this.props.movie.Plot}</div>
+        </div>
       </div>
     )
   }
