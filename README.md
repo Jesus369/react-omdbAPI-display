@@ -1,13 +1,13 @@
-##### Fetching API from Omdb Database and displaying
+## Fetching API from Omdb Database and displaying
 
-### Functionionality
+##### Functionionality
 
 * Fetching an API list of all Batman movies from Omdbapi.com
 * Displaying the image from the full list
 * onClick fetch and display the information of the movie that's been clicked
 
 
-### Special Effect Styling
+##### Special Effect Styling
 
 * Overflow-X scroll in order to scroll from right to left
 * Overflow-Y hidden. Do not allow the context to scroll from top to bottom
